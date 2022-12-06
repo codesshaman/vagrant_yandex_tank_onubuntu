@@ -16,7 +16,7 @@ UCYAN='\e[4;36m'        # Cyan
 
 all:
 	@printf "Launch configuration ${name}...\n"
-	@docker-compose -f ./docker-compose.yml up -d
+	@vagrant up --provider=virtualbox
 
 help:
 	@echo -e "$(OK_COLOR)==== All commands of ${name} configuration ====$(NO_COLOR)"
@@ -28,7 +28,7 @@ help:
 
 build:
 	@printf "$(OK_COLOR)==== Building configuration ${name}... ====$(NO_COLOR)\n"
-	@docker-compose -f ./docker-compose.yml up -d --build
+	@vagrant box add bento/ubuntu-14.04 ubuntu
 
 down:
 	@printf "$(ERROR_COLOR)==== Stopping configuration ${name}... ====$(NO_COLOR)\n"
