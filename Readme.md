@@ -20,13 +20,39 @@ Copy box and go inside the repository folder. Rename this box to "ubuntu":
 
 ``cd vagrant_yandex_tank_onubuntu``
 
-### Step 4
+### Step 4. Inicializations without make
 
-Install configuration:
+Add box to vagrant configuration:
+
+``vagrant box add bento/ubuntu-14.04 ubuntu``
+
+Answer:
+
+```
+==> box: Box file was not detected as metadata. Adding it directly...
+==> box: Adding box 'bento/ubuntu-14.04' (v0) for provider: 
+    box: Unpacking necessary files from: file:///home/user/path to/vagrant_yandex_tank_onubuntu/ubuntu
+==> box: Successfully added box 'bento/ubuntu-14.04' (v0) for 'virtualbox'!
+```
+
+Or if your use make:
+### Step 4. Inicializations with make
+
+Use one command for add and initiate vagrant box:
+
+``make build``
+
+### Step 5. Launch without make
+
+Open virtualbox and run:
 
 ``vagrant up --provider=virtualbox``
 
-### Step 5
+### Step 5. Launch with make
+
+Open virtualbox and run:
+
+``make``
 
 Connect:
 
