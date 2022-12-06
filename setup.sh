@@ -35,3 +35,4 @@ sudo systemctl status node_exporter
 echo "Node exporter has been setup succefully!"
 
 ## Install yandex tank
+
