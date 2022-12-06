@@ -34,7 +34,7 @@ build:
 	@vagrant box add bento/ubuntu-14.04 ubuntu
 
 connect:
-	@printf "$(OK_COLOR)==== Building configuration ${name}... ====$(NO_COLOR)\n"
+	@printf "$(OK_COLOR)==== Connecting to virtual machine ${name}... ====$(NO_COLOR)\n"
 	@ssh vagrant@192.168.58.85
 
 down:
