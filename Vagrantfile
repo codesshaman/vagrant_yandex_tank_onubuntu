@@ -17,15 +17,14 @@ Vagrant.configure(2) do |config|
     end
 
   # master node config
-    config.vm.define 'debian' do |debian|
-        debian.vm.network :private_network, 
+    config.vm.define 'ubuntu' do |ubuntu|
+        ubuntu.vm.network :private_network, 
         ip: VIRTUAL_HOST_PRIVATE_IP_ADDRESS
-        debian.vm.hostname = "debian-k3d"
-        debian.vm.provision "shell",
-        privileged: true, path: "setup.sh",
-        args: [MASTER_NODES, WORKER_NODES]
-        debian.vm.provider "virtualbox" do |v|
-            v.name = "debian_k3d"
+        ubuntu.vm.hostname = "ubunut-yatank"
+        ubuntu.vm.provision "shell",
+        privileged: true, path: "setup.sh"
+        ubuntu.vm.provider "virtualbox" do |v|
+            v.name = "ubunut-yatank"
             v.memory = MEMORY_COUNT
             v.cpus = CPU_CORES_COUNT
         end
