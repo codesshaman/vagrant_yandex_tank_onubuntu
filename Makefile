@@ -22,31 +22,39 @@ help:
 	@echo -e "$(OK_COLOR)==== All commands of ${name} configuration ====$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- make				: Launch configuration"
 	@echo -e "$(WARN_COLOR)- make build			: Building configuration"
+	@echo -e "$(WARN_COLOR)- make connect		: Connect to VM with ssh"
 	@echo -e "$(WARN_COLOR)- make down			: Stopping configuration"
-	@echo -e "$(WARN_COLOR)- make re			: Rebuild configuration"
-	@echo -e "$(WARN_COLOR)- make clean			: Cleaning configuration$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- make ps			: View configuration"
+	@echo -e "$(WARN_COLOR)- make re			: Restart configuration"
+	@echo -e "$(WARN_COLOR)- make clean			: Destroy configuration
+	@echo -e "$(WARN_COLOR)- make  fclean		: Forced destroy all$(NO_COLOR)"
 
 build:
 	@printf "$(OK_COLOR)==== Building configuration ${name}... ====$(NO_COLOR)\n"
 	@vagrant box add bento/ubuntu-14.04 ubuntu
 
+connect:
+	@printf "$(OK_COLOR)==== Building configuration ${name}... ====$(NO_COLOR)\n"
+	@ssh vagrant@192.168.58.85
+
 down:
 	@printf "$(ERROR_COLOR)==== Stopping configuration ${name}... ====$(NO_COLOR)\n"
-	@docker-compose -f ./docker-compose.yml down
+	@vagrant halt
 
 re:	down
 	@printf "$(OK_COLOR)==== Rebuild configuration ${name}... ====$(NO_COLOR)\n"
-	@docker-compose -f ./docker-compose.yml up -d --build
+	@vagrant up --provider=virtualbox
+
+ps:
+	@printf "$(BLUE)==== View configuration ${name}... ====$(NO_COLOR)\n"
+	@vagrant status
 
 clean: down
 	@printf "$(ERROR_COLOR)==== Cleaning configuration ${name}... ====$(NO_COLOR)\n"
-	@docker system prune -a
+	@vagrant destroy
 
 fclean:
 	@printf "$(ERROR_COLOR)==== Total clean of all configurations docker ====$(NO_COLOR)\n"
-	# @docker stop $$(docker ps -qa)
-	# @docker system prune --all --force --volumes
-	# @docker network prune --force
-	# @docker volume prune --force
+	@vagrant destroy --force
 
-.PHONY	: all help build down re clean fclean
+.PHONY	: all help build down re ps clean fclean
