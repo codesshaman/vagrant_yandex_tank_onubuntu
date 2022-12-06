@@ -22,12 +22,12 @@ help:
 	@echo -e "$(OK_COLOR)==== All commands of ${name} configuration ====$(NO_COLOR)"
 	@echo -e "$(WARN_COLOR)- make				: Launch configuration"
 	@echo -e "$(WARN_COLOR)- make build			: Building configuration"
-	@echo -e "$(WARN_COLOR)- make connect		: Connect to VM with ssh"
+	@echo -e "$(WARN_COLOR)- make connect			: Connect to VM with ssh"
 	@echo -e "$(WARN_COLOR)- make down			: Stopping configuration"
 	@echo -e "$(WARN_COLOR)- make ps			: View configuration"
 	@echo -e "$(WARN_COLOR)- make re			: Restart configuration"
-	@echo -e "$(WARN_COLOR)- make clean			: Destroy configuration
-	@echo -e "$(WARN_COLOR)- make  fclean		: Forced destroy all$(NO_COLOR)"
+	@echo -e "$(WARN_COLOR)- make clean			: Destroy configuration"
+	@echo -e "$(WARN_COLOR)- make  fclean			: Forced destroy all$(NO_COLOR)"
 
 build:
 	@printf "$(OK_COLOR)==== Building configuration ${name}... ====$(NO_COLOR)\n"
