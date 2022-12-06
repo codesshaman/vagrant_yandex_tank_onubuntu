@@ -42,7 +42,7 @@ down:
 	@vagrant halt
 
 re:	down
-	@printf "$(OK_COLOR)==== Rebuild configuration ${name}... ====$(NO_COLOR)\n"
+	@printf "$(OK_COLOR)==== Restart configuration ${name}... ====$(NO_COLOR)\n"
 	@vagrant up --provider=virtualbox
 
 ps:
