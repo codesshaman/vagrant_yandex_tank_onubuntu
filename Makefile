@@ -50,11 +50,11 @@ ps:
 	@vagrant status
 
 clean: down
-	@printf "$(ERROR_COLOR)==== Cleaning configuration ${name}... ====$(NO_COLOR)\n"
+	@printf "$(ERROR_COLOR)==== Destroy configuration ${name}... ====$(NO_COLOR)\n"
 	@vagrant destroy
 
 fclean:
-	@printf "$(ERROR_COLOR)==== Total clean of all configurations docker ====$(NO_COLOR)\n"
+	@printf "$(ERROR_COLOR)==== Force destroy configurations ====$(NO_COLOR)\n"
 	@vagrant destroy --force
 
 .PHONY	: all help build down re ps clean fclean
